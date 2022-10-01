@@ -1,3 +1,4 @@
+import { GlobalStyle } from "./styles/global.js";
 import { useEffect, useState } from "react";
 import "./App.css";
 import { ProductsList } from "./components/ProductsList";
@@ -21,21 +22,24 @@ function App() {
   function handleClick(productId) {}
 
   return (
-    <div className="app">
-      <header>
-        <div className="containerHeader">
-          <img src={logo} alt="Logo Burguer Kenzie" />
-          <div>
-            <input type="text" placeholder="Digitar Pesquisa" />
-            <button type="button">Pesquisar</button>
+    <>
+      <GlobalStyle />
+      <div className="App">
+        <header>
+          <div className="containerHeader">
+            <img src={logo} alt="Logo Burguer Kenzie" />
+            <div>
+              <input type="text" placeholder="Digitar Pesquisa" />
+              <button type="button">Pesquisar</button>
+            </div>
           </div>
+        </header>
+        <div className="container">
+          <ProductsList products={products} handleClick={handleClick} />
+          <Cart currentSale={currentSale} />
         </div>
-      </header>
-      <div className="container">
-        <ProductsList products={products} handleClick={handleClick} />
-        <Cart currentSale={currentSale} />
       </div>
-    </div>
+    </>
   );
 }
 
