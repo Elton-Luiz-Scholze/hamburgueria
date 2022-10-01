@@ -9,12 +9,11 @@ function App() {
   // const [cartTotal, setCartTotal] = useState(0);
 
   useEffect(() => {
-    fetch(`https://hamburgueria-kenzie-json-serve.herokuapp.com/products`)
-      .then((res) => res.json)
+    fetch("https://hamburgueria-kenzie-json-serve.herokuapp.com/products")
+      .then((res) => res.json())
       .then((res) => setProducts(res))
       .catch((err) => console.log(err));
   }, []);
-
   // function showProducts() {}
 
   // function handleClick() {}
