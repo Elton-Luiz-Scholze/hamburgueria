@@ -48,7 +48,7 @@ export const FullCart = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 100%;
+  width: 300px;
   max-height: 380px;
   overflow-y: auto;
 `;

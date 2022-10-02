@@ -1,6 +1,8 @@
+import { CardCart } from "./style";
+
 export function CartProduct({ name, category, img, id }) {
   return (
-    <li>
+    <CardCart>
       <img src={img} alt={name} />
       <div>
         <h3>{name}</h3>
@@ -8,6 +10,6 @@ export function CartProduct({ name, category, img, id }) {
         <span>Quantidade: </span>
       </div>
       <button>Remover</button>
-    </li>
+    </CardCart>
   );
 }
