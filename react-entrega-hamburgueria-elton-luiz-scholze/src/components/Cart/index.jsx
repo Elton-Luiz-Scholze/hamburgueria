@@ -13,7 +13,6 @@ export function Cart({ currentSale }) {
       </EmptyCart>
 
       <FullCart>
-        <CartProduct />
         {/* {currentSale.map(({ name, category, img, id }) => (
           <CartProduct
             currentSale={currentSale}
