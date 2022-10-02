@@ -47,8 +47,7 @@ export const EmptyCart = styled.div`
 export const FullCart = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 16px;
   width: 300px;
-  max-height: 380px;
+  max-height: 300px;
   overflow-y: auto;
 `;
