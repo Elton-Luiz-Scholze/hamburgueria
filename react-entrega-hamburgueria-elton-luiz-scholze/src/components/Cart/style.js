@@ -5,13 +5,13 @@ export const ContainerCart = styled.aside`
   flex-direction: column;
   width: 300px;
   height: max-content;
-  margin: 0 auto;
+  margin: 20px auto;
   border-radius: 8px;
 
   & > h3 {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 300px;
     height: 45px;
     padding: 16px;
     color: var(--white);
@@ -25,7 +25,7 @@ export const EmptyCart = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 300px;
   height: 120px;
   gap: 16px;
   margin-bottom: 20px;
