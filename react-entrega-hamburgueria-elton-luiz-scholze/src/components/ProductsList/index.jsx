@@ -1,8 +1,9 @@
 import { Product } from "../Product/index";
+import { ContainerCards } from "./style";
 
 export function ProductsList({ products, handleClick }) {
   return (
-    <ul>
+    <ContainerCards>
       {products.map(({ name, category, price, img, id }) => (
         <Product
           key={id}
@@ -14,6 +15,6 @@ export function ProductsList({ products, handleClick }) {
           handleClick={handleClick}
         />
       ))}
-    </ul>
+    </ContainerCards>
   );
 }
