@@ -19,7 +19,11 @@ function App() {
   }, []);
   // function showProducts() {}
 
-  function handleClick(productId) {}
+  function handleClick(productId) {
+    const productFind = products.find((product) => product.id === productId);
+
+    setCurrentSale([...currentSale, productFind]);
+  }
 
   return (
     <>
