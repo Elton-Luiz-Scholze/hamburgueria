@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CardCart = styled.li`
-  position: absolute;
+  position: relative;
   display: flex;
   align-items: initial;
   gap: 1rem;

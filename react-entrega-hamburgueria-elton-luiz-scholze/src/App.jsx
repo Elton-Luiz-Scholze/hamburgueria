@@ -23,6 +23,7 @@ function App() {
     const productFind = products.find((product) => product.id === productId);
 
     setCurrentSale([...currentSale, productFind]);
+    console.log(currentSale);
   }
 
   return (
