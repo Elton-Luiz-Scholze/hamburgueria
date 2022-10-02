@@ -13,7 +13,8 @@ export function Cart({ currentSale }) {
       </EmptyCart>
 
       <FullCart>
-        {currentSale.map(({ name, category, img, id }) => (
+        <CartProduct />
+        {/* {currentSale.map(({ name, category, img, id }) => (
           <CartProduct
             currentSale={currentSale}
             name={name}
@@ -21,7 +22,7 @@ export function Cart({ currentSale }) {
             img={img}
             id={id}
           />
-        ))}
+        ))} */}
       </FullCart>
       <div>
         <CartTotal currentSale={currentSale} />
