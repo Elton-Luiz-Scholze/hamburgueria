@@ -10,20 +10,39 @@ function App() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentSale, setCurrentSale] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [search, setSearch] = useState(false);
 
   useEffect(() => {
     fetch("https://hamburgueria-kenzie-json-serve.herokuapp.com/products")
       .then((res) => res.json())
-      .then((res) => setProducts(res))
+      .then((res) => {
+        setProducts(res);
+        setFilteredProducts(res);
+      })
       .catch((err) => console.log(err));
   }, []);
 
-  function showProducts(inputValue) {}
+  function showProducts(inputValue) {
+    inputValue.length
+      ? setProducts(
+          filteredProducts.filter(
+            (product) =>
+              product.name
+                .toLowerCase()
+                .includes(inputValue.toLowerCase().trim()) ||
+              product.category
+                .toLowerCase()
+                .includes(inputValue.toLowerCase().trim())
+          )
+        )
+      : setProducts(filteredProducts);
+  }
 
   function handleClick(productId) {
     const productFind = products.find((product) => product.id === productId);
-
-    setCurrentSale([...currentSale, productFind]);
+    currentSale.includes(productFind)
+      ? console.log("//O item já existe no carrinho.(TOAST)")
+      : setCurrentSale([...currentSale, productFind]);
   }
 
   return (
@@ -33,21 +52,43 @@ function App() {
         <header>
           <div className="containerHeader">
             <img src={logo} alt="Logo Burguer Kenzie" />
-            <form>
+            <form
+              onSubmit={(event) => {
+                event.preventDefault();
+                showProducts(inputValue);
+              }}
+            >
               <input
                 type="text"
                 placeholder="Digitar Pesquisa"
                 value={inputValue}
                 onChange={(event) => setInputValue(event.target.value)}
               />
-              <button type="submit" onClick={() => showProducts(inputValue)}>
+              <button type="submit" onClick={() => setSearch(!search)}>
                 Pesquisar
               </button>
             </form>
           </div>
         </header>
         <div className="container">
-          <ProductsList products={products} handleClick={handleClick} />
+          {search ? (
+            <>
+              <h2>Resultado para: {inputValue}</h2>
+              <button
+                type="button"
+                onClick={() => {
+                  setSearch(!search);
+                  setInputValue("");
+                  setProducts(filteredProducts);
+                }}
+              >
+                Fechar Busca
+              </button>
+              <ProductsList products={products} handleClick={handleClick} />
+            </>
+          ) : (
+            <ProductsList products={products} handleClick={handleClick} />
+          )}
           <Cart currentSale={currentSale} setCurrentSale={setCurrentSale} />
         </div>
       </div>
