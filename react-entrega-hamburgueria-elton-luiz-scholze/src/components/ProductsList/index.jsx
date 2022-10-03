@@ -1,6 +1,6 @@
 import { Product } from "../Product/index";
 import { Button } from "../Product/style";
-import { ContainerCards } from "./style";
+import { ContainerCards, Section } from "./style";
 
 export function ProductsList({
   products,
@@ -32,7 +32,7 @@ export function ProductsList({
   return (
     <>
       {search && inputValue.length ? (
-        <section>
+        <Section>
           <div className="resultSearch">
             <h2>
               Resultado para: <p>{inputValue}</p>
@@ -61,7 +61,7 @@ export function ProductsList({
               />
             ))}
           </ContainerCards>
-        </section>
+        </Section>
       ) : (
         allCards()
       )}
