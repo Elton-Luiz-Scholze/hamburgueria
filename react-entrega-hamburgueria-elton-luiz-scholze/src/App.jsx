@@ -7,9 +7,9 @@ import { Cart } from "./components/Cart";
 
 function App() {
   const [products, setProducts] = useState([]);
-  // const [filteredProducts, setFilteredProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentSale, setCurrentSale] = useState([]);
-  // const [cartTotal, setCartTotal] = useState(0);
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     fetch("https://hamburgueria-kenzie-json-serve.herokuapp.com/products")
@@ -17,13 +17,13 @@ function App() {
       .then((res) => setProducts(res))
       .catch((err) => console.log(err));
   }, []);
-  // function showProducts() {}
+
+  function showProducts(inputValue) {}
 
   function handleClick(productId) {
     const productFind = products.find((product) => product.id === productId);
 
     setCurrentSale([...currentSale, productFind]);
-    console.log(currentSale);
   }
 
   return (
@@ -33,15 +33,22 @@ function App() {
         <header>
           <div className="containerHeader">
             <img src={logo} alt="Logo Burguer Kenzie" />
-            <div>
-              <input type="text" placeholder="Digitar Pesquisa" />
-              <button type="button">Pesquisar</button>
-            </div>
+            <form>
+              <input
+                type="text"
+                placeholder="Digitar Pesquisa"
+                value={inputValue}
+                onChange={(event) => setInputValue(event.target.value)}
+              />
+              <button type="submit" onClick={() => showProducts(inputValue)}>
+                Pesquisar
+              </button>
+            </form>
           </div>
         </header>
         <div className="container">
           <ProductsList products={products} handleClick={handleClick} />
-          <Cart currentSale={currentSale} />
+          <Cart currentSale={currentSale} setCurrentSale={setCurrentSale} />
         </div>
       </div>
     </>
