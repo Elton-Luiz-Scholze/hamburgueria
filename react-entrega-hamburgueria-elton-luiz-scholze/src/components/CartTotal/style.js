@@ -21,5 +21,6 @@ export const Total = styled.div`
     height: 55px;
     color: var(--grey-50);
     background-color: var(--grey-20);
+    cursor: pointer;
   }
 `;
