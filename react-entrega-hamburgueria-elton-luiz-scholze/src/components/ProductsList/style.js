@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+export const Section = styled.section`
+  width: 100%;
+  padding-top: 20px;
+
+  @media (min-width: 768px) {
+    max-width: 802px;
+  }
+`;
+
 export const ContainerCards = styled.ul`
   display: flex;
   width: 100%;

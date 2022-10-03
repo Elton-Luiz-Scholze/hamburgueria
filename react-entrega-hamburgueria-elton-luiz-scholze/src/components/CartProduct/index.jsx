@@ -1,4 +1,6 @@
 import { CardCart } from "./style";
+import { ToastContainer, toast, Flip } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export function CartProduct({
   name,
@@ -16,16 +18,33 @@ export function CartProduct({
   }
 
   return (
-    <CardCart>
-      <img src={img} alt={name} />
-      <div>
-        <h3>{name}</h3>
-        <p>{category}</p>
-        <span>Quantidade: </span>
-      </div>
-      <button type="button" onClick={() => deleteProduct(id)}>
-        Remover
-      </button>
-    </CardCart>
+    <>
+      <ToastContainer transition={Flip} />
+      <CardCart>
+        <img src={img} alt={name} />
+        <div>
+          <h3>{name}</h3>
+          <p>{category}</p>
+        </div>
+        <button
+          type="button"
+          onClick={() => {
+            deleteProduct(id);
+            toast.success("Produto removido com sucesso!", {
+              position: "top-center",
+              autoClose: 2000,
+              theme: "colored",
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }}
+        >
+          Remover
+        </button>
+      </CardCart>
+    </>
   );
 }
