@@ -11,7 +11,6 @@ export function CartProduct({
   setCurrentSale,
   index,
 }) {
-  console.log(currentSale);
   function deleteProduct(id) {
     const productFiltered = currentSale.filter((product) => product.id !== id);
     return setCurrentSale(productFiltered);
