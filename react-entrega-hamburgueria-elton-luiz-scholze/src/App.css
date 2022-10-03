@@ -27,15 +27,16 @@
   height: 23px;
 }
 
-.App header .containerHeader div {
+.App header .containerHeader form {
   position: relative;
   margin: 0 auto;
   width: 100%;
-  max-width: 252px;
+  max-width: 280px;
   height: 45px;
 }
 
-.App header .containerHeader div input {
+.App header .containerHeader form input {
+  position: relative;
   width: 100%;
   height: 45px;
   padding-left: 10px;
@@ -43,14 +44,14 @@
   border-radius: 8px;
 }
 
-.App header .containerHeader div input::placeholder {
+.App header .containerHeader form input::placeholder {
   color: var(--grey-20);
 }
 
-.App header .containerHeader div button {
+.App header .containerHeader form button {
   position: absolute;
   top: 8px;
-  right: 0;
+  right: 3px;
   width: 80px;
   height: 35px;
   background-color: var(--color-primary);
@@ -58,7 +59,7 @@
   cursor: pointer;
 }
 
-.App header .containerHeader div button:hover {
+.App header .containerHeader form button:hover {
   background-color: var(--color-primary-50);
 }
 
@@ -71,6 +72,32 @@
   margin: 0 auto;
 }
 
+.resultSearch {
+  display: flex;
+  justify-content: column;
+  width: 95%;
+  max-width: 802px;
+  margin: 0 auto;
+  gap: 12px;
+}
+
+.resultSearch h2 {
+  display: flex;
+  font-weight: 700;
+  color: var(--grey-100);
+  gap: 12px;
+}
+.resultSearch p {
+  font-weight: 700;
+  color: var(--grey-50);
+}
+
+.resultSearch button {
+  width: 60px;
+  max-width: 160px;
+  cursor: pointer;
+}
+
 @media (min-width: 768px) {
   .App header .containerHeader {
     margin: 0 auto;
@@ -80,11 +107,12 @@
   .App header .containerHeader img {
     margin: 0;
   }
-  .App header .containerHeader div {
+  .App header .containerHeader Form {
     display: flex;
     justify-content: space-between;
     margin: 0;
   }
+
   .container {
     flex-direction: row;
   }

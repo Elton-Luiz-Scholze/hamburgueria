@@ -4,6 +4,8 @@ import "./App.css";
 import { ProductsList } from "./components/ProductsList";
 import logo from "./assets/logo.svg";
 import { Cart } from "./components/Cart";
+import { ToastContainer, toast, Flip } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -40,14 +42,36 @@ function App() {
 
   function handleClick(productId) {
     const productFind = products.find((product) => product.id === productId);
-    currentSale.includes(productFind)
-      ? console.log("//O item já existe no carrinho.(TOAST)")
-      : setCurrentSale([...currentSale, productFind]);
+    if (currentSale.includes(productFind)) {
+      toast.error("O item já foi adicionado.", {
+        position: "top-center",
+        autoClose: 2000,
+        theme: "colored",
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      toast.success("Produto adicionado com sucesso!", {
+        position: "top-center",
+        autoClose: 2000,
+        theme: "colored",
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setCurrentSale([...currentSale, productFind]);
+    }
   }
 
   return (
     <>
       <GlobalStyle />
+      <ToastContainer transition={Flip} />
       <div className="App">
         <header>
           <div className="containerHeader">
@@ -64,31 +88,24 @@ function App() {
                 value={inputValue}
                 onChange={(event) => setInputValue(event.target.value)}
               />
-              <button type="submit" onClick={() => setSearch(!search)}>
+              <button type="submit" onClick={() => setSearch(true)}>
                 Pesquisar
               </button>
             </form>
           </div>
         </header>
         <div className="container">
-          {search ? (
-            <>
-              <h2>Resultado para: {inputValue}</h2>
-              <button
-                type="button"
-                onClick={() => {
-                  setSearch(!search);
-                  setInputValue("");
-                  setProducts(filteredProducts);
-                }}
-              >
-                Fechar Busca
-              </button>
-              <ProductsList products={products} handleClick={handleClick} />
-            </>
-          ) : (
-            <ProductsList products={products} handleClick={handleClick} />
-          )}
+          <ProductsList
+            products={products}
+            handleClick={handleClick}
+            search={search}
+            inputValue={inputValue}
+            setSearch={setSearch}
+            setInputValue={setInputValue}
+            setProducts={setProducts}
+            filteredProducts={filteredProducts}
+          />
+
           <Cart currentSale={currentSale} setCurrentSale={setCurrentSale} />
         </div>
       </div>
