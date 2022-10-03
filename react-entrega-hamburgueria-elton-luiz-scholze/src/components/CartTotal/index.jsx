@@ -1,12 +1,16 @@
 import { Total } from "./style";
 
-export function CartTotal() {
+export function CartTotal({ currentSale, setCurrentSale }) {
+  const total = currentSale.reduce((a, b) => a + b.price, 0);
+
   return (
     <Total>
       <p>
-        Total: <span>R$ 40,00</span>
+        Total: <span>R$ {total.toFixed(2).replace(".", ",")}</span>
       </p>
-      <button>Remover Todos</button>
+      <button type="button" onClick={() => setCurrentSale([])}>
+        Remover Todos
+      </button>
     </Total>
   );
 }

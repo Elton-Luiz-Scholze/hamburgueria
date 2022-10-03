@@ -2,7 +2,7 @@ import { CartProduct } from "../CartProduct";
 import { CartTotal } from "../CartTotal";
 import { ContainerCart, EmptyCart, FullCart } from "./style";
 
-export function Cart({ currentSale }) {
+export function Cart({ currentSale, setCurrentSale }) {
   return (
     <ContainerCart>
       <h3>Carrinho de compras</h3>
@@ -15,20 +15,25 @@ export function Cart({ currentSale }) {
       ) : (
         <>
           <FullCart>
-            {currentSale.map(({ name, category, img, id }) => (
+            {currentSale.map(({ name, category, img, id }, index) => (
               <CartProduct
                 key={id}
                 currentSale={currentSale}
                 name={name}
                 category={category}
                 img={img}
+                index={index}
                 id={id}
+                setCurrentSale={setCurrentSale}
               />
             ))}
           </FullCart>
-          <div>
-            <CartTotal currentSale={currentSale} />
-          </div>
+          <>
+            <CartTotal
+              currentSale={currentSale}
+              setCurrentSale={setCurrentSale}
+            />
+          </>
         </>
       )}
     </ContainerCart>

@@ -1,6 +1,20 @@
 import { CardCart } from "./style";
 
-export function CartProduct({ name, category, img, id }) {
+export function CartProduct({
+  name,
+  category,
+  img,
+  id,
+  currentSale,
+  setCurrentSale,
+  index,
+}) {
+  console.log(currentSale);
+  function deleteProduct(id) {
+    const productFiltered = currentSale.filter((product) => product.id !== id);
+    return setCurrentSale(productFiltered);
+  }
+
   return (
     <CardCart>
       <img src={img} alt={name} />
@@ -9,7 +23,9 @@ export function CartProduct({ name, category, img, id }) {
         <p>{category}</p>
         <span>Quantidade: </span>
       </div>
-      <button>Remover</button>
+      <button type="button" onClick={() => deleteProduct(id)}>
+        Remover
+      </button>
     </CardCart>
   );
 }
