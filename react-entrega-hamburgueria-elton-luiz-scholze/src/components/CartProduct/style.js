@@ -42,9 +42,10 @@ export const CardCart = styled.li`
   button {
     position: absolute;
     top: 10px;
-    right: 5px;
+    right: 10px;
     height: max-content;
     border: none;
     background-color: var(--grey-0);
+    cursor: pointer;
   }
 `;
